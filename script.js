@@ -11,6 +11,20 @@ if(input.includes("hello"))
 else if(input.includes("time"))
     output = new Date().toLocaleTimeString();
 }
+else if(input.includes("youtube")){
+    output = "Opening YouTube";
+    window.open("https://www.youtube.com");
+}
+
+else if(input.includes("google")){
+    output = "Opening Google";
+    window.open("https://www.google.com");
+}
+
+else if(input.includes("github")){
+    output = "Opening GitHub";
+    window.open("https://github.com");
+}
 else{
     output = "Sorry, I don't understand.";
 }
