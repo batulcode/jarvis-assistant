@@ -31,26 +31,35 @@ function testVoice() {
     speech.lang = "en-US";
     speechSynthesis.speak(speech);
 }
+
 function startListening() {
 
-const recognition =
-new(window.SpeechRecognition ||
-window.webkitSpeechRecognition)();
+if (!('webkitSpeechRecognition' in window)) {
+    alert("Speech Recognition not supported");
+    return;
+}
+
+const recognition = new webkitSpeechRecognition();
 
 recognition.lang = "en-US";
 
-recognition.start();
+recognition.onstart = function() {
+    alert("Listening...");
+};
 
 recognition.onresult = function(event) {
 
-let command =
-event.results[0][0].transcript;
+    let command = event.results[0][0].transcript;
 
-document.getElementById("userInput").value =
-command;
+    document.getElementById("userInput").value = command;
 
-talk();
-
+    talk();
 };
+
+recognition.onerror = function(event) {
+    alert("Error: " + event.error);
+};
+
+recognition.start();
 
 }
