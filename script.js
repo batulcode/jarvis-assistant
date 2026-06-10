@@ -5,22 +5,22 @@ document.getElementById("userInput").value.toLowerCase();
 
 let output = "";
 
-if (input === "hello") {
+if(input === "hello"){
     output = "Hello, I am Jarvis!";
 }
-else if (input === "how are you") {
-    output = "I am doing great!";
-}
-else if (input === "time") {
+else if(input === "time"){
     output = new Date().toLocaleTimeString();
 }
-else if (input === "date") {
+else if(input === "date"){
     output = new Date().toLocaleDateString();
 }
-else {
+else{
     output = "Sorry, I don't understand.";
 }
 
 document.getElementById("output").innerText = output;
+
+let speech = new SpeechSynthesisUtterance(output);
+speechSynthesis.speak(speech);
 
 }
