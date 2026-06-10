@@ -26,3 +26,8 @@ if ('speechSynthesis' in window) {
 }
 
 }
+function testVoice() {
+    let speech = new SpeechSynthesisUtterance("Hello Batul, Jarvis is working.");
+    speech.lang = "en-US";
+    speechSynthesis.speak(speech);
+}
