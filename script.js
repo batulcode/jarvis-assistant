@@ -5,10 +5,10 @@ let input = document.getElementById("userInput").value.toLowerCase();
 
 let output = "";
 
-if(input === "hello"){
+if(input.includes("hello"))
     output = "Hello, I am Jarvis!";
 }
-else if(input === "time"){
+else if(input.includes("time"))
     output = new Date().toLocaleTimeString();
 }
 else{
