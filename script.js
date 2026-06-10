@@ -1,26 +1,26 @@
 function talk() {
 
-    alert("Speech support: " + ('speechSynthesis' in window));
 let input = document.getElementById("userInput").value.toLowerCase();
 
 let output = "";
 
-if(input.includes("hello"))
+if(input.includes("hello")){
     output = "Hello, I am Jarvis!";
 }
-else if(input.includes("time"))
+else if(input.includes("time")){
     output = new Date().toLocaleTimeString();
+}
+else if(input.includes("date")){
+    output = new Date().toLocaleDateString();
 }
 else if(input.includes("youtube")){
     output = "Opening YouTube";
     window.open("https://www.youtube.com");
 }
-
 else if(input.includes("google")){
     output = "Opening Google";
     window.open("https://www.google.com");
 }
-
 else if(input.includes("github")){
     output = "Opening GitHub";
     window.open("https://github.com");
@@ -35,11 +35,10 @@ if ('speechSynthesis' in window) {
     let speech = new SpeechSynthesisUtterance(output);
     speech.lang = "en-US";
     window.speechSynthesis.speak(speech);
-} else {
-    alert("Speech not supported on this browser");
 }
 
 }
+
 function testVoice() {
     let speech = new SpeechSynthesisUtterance("Hello Batul, Jarvis is working.");
     speech.lang = "en-US";
@@ -56,10 +55,7 @@ if (!('webkitSpeechRecognition' in window)) {
 const recognition = new webkitSpeechRecognition();
 
 recognition.lang = "en-US";
-
-recognition.onstart = function() {
-    alert("Listening...");
-};
+recognition.start();
 
 recognition.onresult = function(event) {
 
@@ -73,7 +69,5 @@ recognition.onresult = function(event) {
 recognition.onerror = function(event) {
     alert("Error: " + event.error);
 };
-
-recognition.start();
 
 }
