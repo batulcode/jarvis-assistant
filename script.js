@@ -1,5 +1,6 @@
 function talk() {
 
+    alert("Speech support: " + ('speechSynthesis' in window));
 let input = document.getElementById("userInput").value.toLowerCase();
 
 let output = "";
